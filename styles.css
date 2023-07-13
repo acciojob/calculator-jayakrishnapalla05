@@ -1,2 +1,36 @@
 
 /* Your CSS Code here. */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+}
+
+/* Your CSS Code here. */
+.calculator{
+    /* border: 2px solid red; */
+    margin: 50px auto;
+    border: none;
+    width: 300px;
+    height: 480px;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    box-shadow: rgba(14, 30, 37, 0.576) 0px 8px 8px 0px, rgba(14, 30, 37, 0.565) 0px 8px 36px 0px;
+
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+.row button{
+    outline: none;
+    border-radius: 0;
+    border: 0.1px solid grey;
+    cursor: pointer;
+    background-color: #ffff;
+}
+.row #ans{
+    background-color: #5555ff;
+    color: #ffff;
+}
