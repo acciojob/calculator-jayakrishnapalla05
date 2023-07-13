@@ -1,50 +1,42 @@
-const inputElement = document.getElementById('input');
- const numberButtons = document.querySelectorAll('[id^="block"]');
- const operatorButtons = document.querySelectorAll('[id="plus"], [id="minus"], [id="multiply"], [id="divide"],[id="openningBracket"],[id="closingBracket"]');
- const dotButton = document.getElementById('dot');
- const ansButton = document.getElementById('ans');
- const clearButton = document.getElementById('clr');
- const backSpaceBtn = document.getElementById("clear");
 
-numberButtons.forEach((button) =>{
-	button.addEventListener('click', ()=>{
-		inputElement.value += button.textContent;
-	});
+const display = document.getElementById('input');
+
+// Get all the number buttons and add event listeners
+const numberButtons = document.querySelectorAll('.block');
+numberButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    display.value += button.textContent;
+  });
 });
 
-operatorButtons.forEach((button) =>{
-	button.addEventListener('click', ()=>{
-		inputElement.value += button.textContent;
-	});
+// Get the decimal button and add event listener
+const decimalButton = document.getElementById('dot');
+decimalButton.addEventListener('click', () => {
+  if (!display.value.includes('.')) {
+    display.value += decimalButton.textContent;
+  }
 });
 
-dotButton.forEach((button) =>{
-	button.addEventListener('click', ()=>{
-		if(!inputElement.value.includes('.'))
-		{
-			inputElement.value += button.textContent;
-		}
-	});
-	
+// Get all the operator buttons and add event listeners
+const operatorButtons = document.querySelectorAll('.operator');
+operatorButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    display.value += button.textContent;
+  });
 });
 
-
-ansButton.addEventListener('click', ()=>{
-	try{
-		const res=eval(inputElement.value);
-		inputElement.value=res;
-	}
-	catch
-	{
-		inputElement.value='Error';
-	}
+// Get the equal button and add event listener
+const equalButton = document.getElementById('ans');
+equalButton.addEventListener('click', () => {
+  try {
+    display.value = eval(display.value);
+  } catch (error) {
+    display.value = 'Error';
+  }
 });
 
-
-clearButton.addEventListener('click', ()=>{
-	inputElement.value ="";
+// Get the clear button and add event listener
+const clearButton = document.getElementById('clr');
+clearButton.addEventListener('click', () => {
+  display.value = '';
 });
-
-backSpaceBtn.addEventListener('click', ()=>{
-	inputElement.value=inputElement.value.slice(0,-1);
-})
